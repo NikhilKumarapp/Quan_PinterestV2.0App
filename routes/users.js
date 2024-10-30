@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const plm = require('passport-local-mongoose');
 
-mongoose.connect('mongodb://0.0.0.0:27017/pinter');
+mongoose.connect('mongodb+srv://nikhilkappincuba:DFqz9iO5UFthGQqO@pinterestapp.jfts1.mongodb.net/?retryWrites=true&w=majority&appName=PinterestApp');
 
 const userSchema = new mongoose.Schema({
     username: String,
