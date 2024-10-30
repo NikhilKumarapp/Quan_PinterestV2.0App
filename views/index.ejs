@@ -1,0 +1,46 @@
+<% include ./partials/header.ejs %>
+
+<!-- Full-screen login container -->
+<div class="min-h-screen bg-zinc-300 flex items-center justify-center">
+    <!-- Login card container -->
+    <div class="w-full max-w-sm bg-white px-10 py-8 rounded-3xl shadow-lg">
+        <!-- Heading -->
+        <div class="flex items-start justify-center mb-6">
+          <img src="/images/Pinterestlogo.jpg" alt="Pinterest Logo" class="w-10 h-10 mr-3">
+          <h1 class="text-2xl text-center text-zinc-800 capitalize font-semibold mb-6">Welcome to Pinterest</h1>
+      </div>
+        
+        <!-- Login Form -->
+        <form action="/login" method="post">
+            <!-- Username Field -->
+            <input
+                class="border border-gray-300 rounded-md block w-full px-4 py-2 mb-4 text-gray-800 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all duration-200"
+                type="text" name="username" placeholder="Username" required>
+
+            <!-- Password Field -->
+            <input
+                class="border border-gray-300 rounded-md block w-full px-4 py-2 mb-4 text-gray-800 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all duration-200"
+                type="password" name="password" placeholder="Password" required>
+
+            <!-- Forget Password Link -->
+            <a href="#" class="text-sm text-red-600 hover:underline inline-block mb-6 font-semibold">Forgot password?</a>
+
+            <!-- Login Button -->
+            <input
+                class="w-full px-4 py-2 mt-2 bg-red-600 text-white font-medium rounded-full cursor-pointer hover:bg-red-500 transition-all duration-200 shadow-md"
+                type="submit" value="Log In">
+            
+            <!-- Terms and Policy Notice -->
+            <p class="text-gray-600 text-xs mt-6 text-center leading-tight">
+                By continuing, you agree to Pinterest's <a href="#" class="text-red-600 hover:underline">Terms of Service</a> and acknowledge you've read our <a href="#" class="text-red-600 hover:underline">Privacy Policy</a>.
+            </p>
+
+            <!-- Sign Up Link -->
+            <a href="/register" class="text-sm font-semibold text-center text-red-600 mt-6 block hover:underline">
+                Not on Pinterest yet? Sign up
+            </a>
+        </form>
+    </div>
+</div>
+
+<% include ./partials/footer.ejs %>

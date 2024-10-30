@@ -1,0 +1,57 @@
+<% include ./partials/header.ejs %>
+
+<div class="profile min-h-screen bg-zinc-900 text-white py-12">
+    <form id="uploadform" hidden action="/fileupload" method="post" enctype="multipart/form-data">
+        <input type="file" name="image">
+    </form>
+
+    <!-- Profile Section -->
+    <div class="flex flex-col items-center mt-8 space-y-4">
+        <div class="relative">
+            <div class="w-36 h-36 bg-zinc-200 rounded-full overflow-hidden shadow-lg transition-all duration-300 hover:scale-105">
+                <img class="w-full h-full object-cover" src="/images/uploads/<%= user.profileImage %>" alt="Profile Image">
+            </div>
+            <span id="uploadicon" class="absolute bottom-1 right-1 w-9 h-9 flex items-center justify-center bg-zinc-300 text-zinc-800 rounded-full cursor-pointer hover:bg-zinc-400 shadow-md hover:shadow-lg transition-all duration-200">
+                <i class="ri-pencil-fill"></i>
+            </span>
+        </div>
+
+        <!-- User Information -->
+        <h1 class="text-4xl font-bold mt-4"><%= user.username %></h1>
+        <h3 class="text-lg text-gray-400">@<%= user.username %></h3>
+
+        <!-- Action Buttons -->
+        <div class="mt-5 flex space-x-4">
+            <a href="/edit" class="px-8 py-2 bg-zinc-700 text-white rounded-full text-base font-medium hover:bg-zinc-600 transition-colors duration-200 shadow-md hover:shadow-lg">Edit Profile</a>
+            <a href="/addPost" class="px-8 py-2 bg-red-600 text-white rounded-lg text-base font-medium hover:bg-red-500 transition-colors duration-200 shadow-md hover:shadow-lg">Add New Post</a>
+        </div>
+    </div>
+
+    <!-- User Posts Section -->
+    <div class="flex flex-wrap justify-center gap-6 px-8 mt-12">
+        <% user.posts.forEach(function(post) { %>
+            <a href="/show/post" class="block text-lg font-semibold text-white hover:text-gray-300 transition-colors duration-200">
+                <div class="card max-w-sm bg-zinc-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 transform hover:scale-105">
+                    <div class="w-60 h-60 bg-zinc-300 rounded-t-lg overflow-hidden">
+                        <img class="w-full h-full object-cover" src="/images/uploads/<%= post.image %>" alt="Uploaded Pin">
+                    </div>
+                    <div class="p-4">
+                        <a href="/show/post" class="block text-lg font-semibold text-white hover:text-gray-300 transition-colors duration-200">Your Uploaded Pin</a>
+                        <h5 class="text-sm font-medium text-gray-400 mt-1"><%= user.posts.length %> Pins</h5>
+                    </div>
+                </div>
+            </a>
+        <% }) %>
+    </div>
+</div>
+
+<script>
+    document.querySelector('#uploadicon').addEventListener('click', function() {
+        document.querySelector('#uploadform input').click();
+    });
+    document.querySelector('#uploadform input').addEventListener('change', function() {
+        document.querySelector('#uploadform').submit();
+    });
+</script>
+
+<% include ./partials/footer.ejs %>
